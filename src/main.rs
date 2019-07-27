@@ -1,3 +1,4 @@
+#![deny(warnings, rust_2018_idioms)]
 #![feature(async_await)]
 
 extern crate futures;
@@ -13,7 +14,7 @@ use url::form_urlencoded;
 use futures_util::TryStreamExt;
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+async fn main() {
     let addr = ([127, 0, 0, 1], 3000).into();
 
     let service = make_service_fn(|_| {
