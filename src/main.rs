@@ -50,7 +50,6 @@ async fn price(req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
             let b = req.into_body().try_concat().await?;
             let params = form_urlencoded::parse(b.as_ref()).into_owned().collect::<HashMap<String, String>>();
 
-            println!("PARAMS: {:?}",params);
             Ok(Response::new(Body::from("$8")))
         }
 
