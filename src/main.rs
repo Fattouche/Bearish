@@ -46,6 +46,7 @@ async fn price(req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
             Ok(Response::new(Body::from("You need to GET a specific stock symbol ie /ACB")))
         }
 
+        // Parse the url and put it into a hashmap
         (&Method::GET, "/") => {
             let b = req.into_body().try_concat().await?;
             let params = form_urlencoded::parse(b.as_ref()).into_owned().collect::<HashMap<String, String>>();
